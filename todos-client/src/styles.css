@@ -1,0 +1,17 @@
+.ui-datatable .ui-datatable-thead>tr>th, 
+.ui-datatable .ui-datatable-tfoot>tr>td, 
+.ui-datatable .ui-datatable-data>tr>td {
+		border:2px solid rgb(160, 165, 160);
+	}
+
+.main-container .ui-datatable .ui-datatable-thead > tr > th { display: none }
+
+.main-container .ui-rowgroup-header {background: rgb(224, 226, 129)}
+
+.main-container .ui-dialog-footer{
+    padding: 4px;
+}
+.main-container .ui-dialog.ui-widget .ui-dialog-titlebar {
+	padding: 5px;
+	background: orange;
+}

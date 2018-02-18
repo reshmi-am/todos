@@ -1,0 +1,22 @@
+<div class="main-container">
+  <h2 style="color:white;padding-top:10px">My tasks</h2>
+  <p-dataTable #table [value]="todos" sortField="date_due" rowGroupMode="subheader" groupField="date_due" 
+      expandableRowsGroups="true" [sortableRowGroup]="false" [style]="{'margin-top': '0'}" 
+      [styleClass]="no-header-table" emptyMessage="No pending tasks for you !!! ">
+    <ng-template pTemplate="rowgroupheader" let-rowData>{{rowData['date_due'] | date}}</ng-template>
+    <p-column [style]="{'text-align':'left'}" field="item"></p-column>
+  </p-dataTable>
+  <div><button style="float:right" class="button-add"  (click)="showDialog()"><i class=" fa fa-plus-circle"></i></button></div>
+  <p-dialog header="Add Item" [(visible)]="displaydetails" [style]="{'width':'300'}">
+    <input [(ngModel)] = "newitem" placeholder='Enter task' type="text" size="30" pInputText>
+    <br> 
+    <div class="overlay-calendar">
+      <p-calendar [(ngModel)] = "duedate" placeholder='Due on' [showIcon]="true"></p-calendar>
+    </div>
+    <p-footer>
+      <button type="button" pButton icon="fa-check" (click)="displaydetails=false;saveItem()" label="Add"></button>
+      <button type="button" pButton icon="fa-close" (click)="displaydetails=false" label="Cancel"></button>
+    </p-footer>
+  </p-dialog>
+</div>  
+
