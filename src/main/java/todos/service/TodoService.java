@@ -26,11 +26,7 @@ public class TodoService {
 		todo.setStatus(TODO_STATUS.PENDING.getStatus());
 		repo.insert(todo);
 	}
-	
-	public void updateItem(ToDo todo){
-		repo.updateItem(todo);
-	}
-	
+
 	public void deleteItem(int id){
 		repo.updateStatus(id, TODO_STATUS.DELETED.getStatus());
 	}

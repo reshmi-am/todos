@@ -38,14 +38,6 @@ public class MainController {
     }
     
     /*
-     * Edit details of an item
-     */
-    @RequestMapping(value="/todo", method = RequestMethod.PUT, consumes = "application/json")
-    public void updateItem(@RequestBody ToDo todo) {
-    	service.updateItem(todo);
-    }
-    	
-    /*
      * Mark an item as deleted
      */
     @RequestMapping(value="/todo/{id}", method = RequestMethod.DELETE)

@@ -21,3 +21,11 @@
     margin-left: 0px;
     text-align: left;
 }
+
+.ui-datatable.borderless thead th,
+.ui-datatable.borderless tbody,
+.ui-datatable.borderless tbody tr,
+.ui-datatable.borderless tbody td {
+    border-style: none !important;
+    border: hidden !important;    
+}

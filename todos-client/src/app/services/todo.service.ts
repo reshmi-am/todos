@@ -32,4 +32,20 @@ export class TodoService {
         return this.http.post(this.URL + "todo", itemdetails, options)
             .catch((error:any) => Observable.throw(error || 'Server error'));
     }
+
+    markItemAsDone(itemid: number){
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put(this.URL + "todo/" + itemid, options)
+        .catch((error:any) => Observable.throw(error || 'Server error'));
+    }
+
+    deleteItem(itemid: number){
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.delete(this.URL + "todo/" + itemid, options)
+         .catch((error:any) => Observable.throw(error || 'Server error'));
+    }
 }

@@ -1,12 +1,39 @@
 <div class="main-container">
+
+  <!--title -->
   <h2 style="color:white;padding-top:10px">My tasks</h2>
+
+  <!--item list table with options to mark complete and delete -->
   <p-dataTable #table [value]="todos" sortField="date_due" rowGroupMode="subheader" groupField="date_due" 
       expandableRowsGroups="true" [sortableRowGroup]="false" [style]="{'margin-top': '0'}" 
       [styleClass]="no-header-table" emptyMessage="No pending tasks for you !!! ">
+
+      <!--date wise grouping -->
     <ng-template pTemplate="rowgroupheader" let-rowData>{{rowData['date_due'] | date}}</ng-template>
-    <p-column [style]="{'text-align':'left'}" field="item"></p-column>
+
+    <!--item description -->
+    <p-column [style]="{'text-align':'left', 'width': '200px'}" field="item"></p-column>
+
+    <!-- check box to complete item -->
+    <p-column [style]="{'text-align':'right'}" styleClass="borderless">
+      <ng-template let-col let-item="rowData" pTemplate="body">
+        <input type="checkbox" [disabled]="item.status=='C'" [checked]="item.status=='C'" (change)="completeItem(item)"/>
+      </ng-template>
+    </p-column>
+
+    <!-- trash button to delete an item -->
+    <p-column [style]="{'text-align':'right', 'padding': '1px'}">
+      <ng-template let-col let-item="rowData" pTemplate="body">
+        <button (click) = "deleteItem(item)"><i class="fa fa-trash-o"></i></button>
+      </ng-template>
+    </p-column>
+
   </p-dataTable>
+
+  <!-- add item button -->
   <div><button style="float:right" class="button-add"  (click)="showDialog()"><i class=" fa fa-plus-circle"></i></button></div>
+  
+  <!-- modal component to add new item -->
   <p-dialog header="Add Item" [(visible)]="displaydetails" [style]="{'width':'300'}">
     <input [(ngModel)] = "newitem" placeholder='Enter task' type="text" size="30" pInputText>
     <br> 
@@ -18,5 +45,6 @@
       <button type="button" pButton icon="fa-close" (click)="displaydetails=false" label="Cancel"></button>
     </p-footer>
   </p-dialog>
+
 </div>  
 

@@ -1,0 +1,14 @@
+Simple ToDo List manager:
+
+Functions:
+---------
+View all tasks - pending and completed.
+Option to add a task along with the due date.
+Option to mark it as completed.
+Option to delete an item.
+
+Tech stack:
+----------
+Client - Angular 5
+Server - Java, Spring boot, Spring Rest, Spring jdbc
+Persistence - H2 IMDB

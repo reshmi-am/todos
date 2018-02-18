@@ -49,4 +49,20 @@ export class AppComponent {
     this.newitem = null; 
     this.duedate = null;
   }
+
+  completeItem(item){
+    console.log(item);
+    this.service.markItemAsDone(item.id)
+     .subscribe(data=>this.handleItemDone(item));
+
+  }
+  
+  handleItemDone(item){
+    item.status = 'C';
+  }
+
+  deleteItem(item){
+    this.service.deleteItem(item.id)
+    .subscribe(data=>this.fetchTodos());
+  }
 }

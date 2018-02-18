@@ -16,8 +16,8 @@ public class TodoRepository {
     JdbcTemplate jdbcTemplate;
     
     public List<ToDo> findAllTodos() {
-    	return jdbcTemplate.query("select * from todo_list where status = ? " , new Object[] {
-    			TODO_STATUS.PENDING.getStatus()
+    	return jdbcTemplate.query("select * from todo_list where status != ? " , new Object[] {
+    			TODO_STATUS.DELETED.getStatus()
         },  new TodoRowMapper());
     }
     
@@ -30,14 +30,6 @@ public class TodoRepository {
             });
     }
 
-    public int updateItem(ToDo todo){
-    	
-        return jdbcTemplate.update("update todo_list " + " set item = ?, date_due = ?, date_completed = ?, status= ? " + " where id = ?",
-                new Object[] {
-                    todo.getItem(), todo.getDate_due(), todo.getDate_completed(), todo.getStatus(), todo.getId()
-                });
-    }
-    
     public int updateStatus(int id, char status){
     	
         return jdbcTemplate.update("update todo_list " + " set status= ? " + " where id = ?",
